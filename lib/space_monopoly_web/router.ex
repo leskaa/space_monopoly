@@ -25,7 +25,10 @@ defmodule SpaceMonopolyWeb.Router do
   # Other scopes may use custom stacks.
   scope "/api", SpaceMonopolyWeb do
     pipe_through :api
+
+    # Pieces Json API
     get "/pieces", PieceController, :index
+    get "/pieces/:id", PieceController, :show
   end
 
   # Enables LiveDashboard only for development
