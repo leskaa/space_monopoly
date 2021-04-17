@@ -1,8 +1,9 @@
 defmodule SpaceMonopoly.GameObjects.Player do
   use Ecto.Schema
   import Ecto.Changeset
-  # alias SpaceMonopoly.Repo
-  # import Ecto.Query
+  alias SpaceMonopoly.Repo
+  import Ecto.Query
+  alias SpaceMonopoly.GameObjects.Player
 
   schema "players" do
     field :cookie, :string
@@ -14,10 +15,16 @@ defmodule SpaceMonopoly.GameObjects.Player do
 
   @doc false
   def changeset(player, attrs) do
-    # Repo.one(from p in Player, select: count("*"))
     player
     |> cast(attrs, [:cookie, :score])
     |> validate_required([:cookie, :score])
-    # |> validate_length(count, max: 8)
+    |> validate_player_count
+  end
+
+  def validate_player_count(%Ecto.Changeset{} = changeset) do
+    case Repo.one(from p in Player, select: count("*")) < 8 do
+      true -> changeset
+      false -> add_error(changeset, :score, "Too many players")
+    end
   end
 end
