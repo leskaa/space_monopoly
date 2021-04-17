@@ -1,4 +1,4 @@
-defmodule Hello.Repo.Migrations.CreatePieces do
+defmodule SpaceMonopoly.Repo.Migrations.CreatePieces do
   use Ecto.Migration
 
   def change do

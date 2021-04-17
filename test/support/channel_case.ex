@@ -1,4 +1,4 @@
-defmodule HelloWeb.ChannelCase do
+defmodule SpaceMonopolyWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule HelloWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use HelloWeb.ChannelCase, async: true`, although
+  by setting `use SpaceMonopolyWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule HelloWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import HelloWeb.ChannelCase
+      import SpaceMonopolyWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint HelloWeb.Endpoint
+      @endpoint SpaceMonopolyWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Hello.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SpaceMonopoly.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Hello.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SpaceMonopoly.Repo, {:shared, self()})
     end
 
     :ok
