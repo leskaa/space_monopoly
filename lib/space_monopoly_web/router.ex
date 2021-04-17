@@ -17,7 +17,7 @@ defmodule SpaceMonopolyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/select", PageController, :showSelect
+    get "/select", SelectController, :index
   end
 
 
