@@ -2,6 +2,6 @@ defmodule SpaceMonopolyWeb.PageController do
   use SpaceMonopolyWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "select.html")
+    render(conn, "index.html")
   end
 end

@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias SpaceMonopoly.Schema.Piece
+alias SpaceMonopoly.GameObjects.Piece
 alias SpaceMonopoly.Repo
 
 Repo.insert!(%Piece{
