@@ -1,5 +1,12 @@
 # Hello
 
+Before starting your Phoenix server, you have to create a postgres database
+
+Run `docker-compose create`
+then `docker-compose up`
+This will create your database with the default login credentials
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
