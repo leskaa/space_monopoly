@@ -17,13 +17,9 @@ defmodule SpaceMonopolyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/select", PageController, :showSelect
   end
 
-  scope "/select", SpaceMonopolyWeb do
-    pipe_through :browser
-
-    get "/select", SelectController, :index
-  end
 
 
   # Other scopes may use custom stacks.
