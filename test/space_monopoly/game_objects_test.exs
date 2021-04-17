@@ -67,4 +67,65 @@ defmodule SpaceMonopoly.GameObjectsTest do
       assert %Ecto.Changeset{} = GameObjects.change_piece(piece)
     end
   end
+
+  describe "players" do
+    alias SpaceMonopoly.GameObjects.Player
+
+    @valid_attrs %{cookie: "some cookie", score: 42}
+    @update_attrs %{cookie: "some updated cookie", score: 43}
+    @invalid_attrs %{cookie: nil, score: nil}
+
+    def player_fixture(attrs \\ %{}) do
+      {:ok, player} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> GameObjects.create_player()
+
+      player
+    end
+
+    test "list_players/0 returns all players" do
+      player = player_fixture()
+      assert GameObjects.list_players() == [player]
+    end
+
+    test "get_player!/1 returns the player with given id" do
+      player = player_fixture()
+      assert GameObjects.get_player!(player.id) == player
+    end
+
+    test "create_player/1 with valid data creates a player" do
+      assert {:ok, %Player{} = player} = GameObjects.create_player(@valid_attrs)
+      assert player.cookie == "some cookie"
+      assert player.score == 42
+    end
+
+    test "create_player/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = GameObjects.create_player(@invalid_attrs)
+    end
+
+    test "update_player/2 with valid data updates the player" do
+      player = player_fixture()
+      assert {:ok, %Player{} = player} = GameObjects.update_player(player, @update_attrs)
+      assert player.cookie == "some updated cookie"
+      assert player.score == 43
+    end
+
+    test "update_player/2 with invalid data returns error changeset" do
+      player = player_fixture()
+      assert {:error, %Ecto.Changeset{}} = GameObjects.update_player(player, @invalid_attrs)
+      assert player == GameObjects.get_player!(player.id)
+    end
+
+    test "delete_player/1 deletes the player" do
+      player = player_fixture()
+      assert {:ok, %Player{}} = GameObjects.delete_player(player)
+      assert_raise Ecto.NoResultsError, fn -> GameObjects.get_player!(player.id) end
+    end
+
+    test "change_player/1 returns a player changeset" do
+      player = player_fixture()
+      assert %Ecto.Changeset{} = GameObjects.change_player(player)
+    end
+  end
 end

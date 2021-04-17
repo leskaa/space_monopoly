@@ -29,6 +29,9 @@ defmodule SpaceMonopolyWeb.Router do
     # Pieces Json API
     get "/pieces", PieceController, :index
     get "/pieces/:id", PieceController, :show
+
+    # Players Json API
+    resources "/players", PlayerController
   end
 
   # Enables LiveDashboard only for development
