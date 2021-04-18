@@ -1,6 +1,8 @@
 defmodule SpaceMonopolyWeb.PlayerView do
   use SpaceMonopolyWeb, :view
   alias SpaceMonopolyWeb.PlayerView
+  alias SpaceMonopolyWeb.PieceView
+  import SpaceMonopoly.GameObjects
 
   def render("index.json", %{players: players}) do
     %{data: render_many(players, PlayerView, "player.json")}
@@ -11,8 +13,11 @@ defmodule SpaceMonopolyWeb.PlayerView do
   end
 
   def render("player.json", %{player: player}) do
-    %{id: player.id,
+    %{
+      id: player.id,
       cookie: player.cookie,
-      score: player.score}
+      score: player.score,
+      piece: render_one(get_piece!(player.piece), PieceView, "piece.json")
+    }
   end
 end

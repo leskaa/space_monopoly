@@ -16,8 +16,8 @@ defmodule SpaceMonopoly.GameObjects.Player do
   @doc false
   def changeset(player, attrs) do
     player
-    |> cast(attrs, [:cookie, :score])
-    |> validate_required([:cookie, :score])
+    |> cast(attrs, [:cookie, :score, :piece])
+    |> validate_required([:cookie, :score, :piece])
     |> validate_player_count
   end
 
