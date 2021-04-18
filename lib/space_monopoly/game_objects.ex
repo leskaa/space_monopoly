@@ -149,6 +149,7 @@ defmodule SpaceMonopoly.GameObjects do
     %Player{}
     |> Player.changeset(attrs)
     |> Repo.insert()
+    |> broadcast(:player_created)
   end
 
   @doc """
@@ -167,6 +168,7 @@ defmodule SpaceMonopoly.GameObjects do
     player
     |> Player.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:player_updated)
   end
 
   @doc """
@@ -196,5 +198,16 @@ defmodule SpaceMonopoly.GameObjects do
   """
   def change_player(%Player{} = player, attrs \\ %{}) do
     Player.changeset(player, attrs)
+  end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(SpaceMonopoly.PubSub, "players")
+  end
+
+  defp broadcast({:error, _reason} = error, _event), do: error
+
+  defp broadcast({:ok, post}, event) do
+    Phoenix.PubSub.broadcast(SpaceMonopoly.PubSub, "players", {event, post})
+    {:ok, post}
   end
 end

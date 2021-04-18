@@ -1,0 +1,27 @@
+<h1>The light is <%= @light_bulb_status %>.</h1>
+<button phx-click="on" <%= @on_button_status %>>On</button>
+<button phx-click="off" <%= @off_button_status %>>Off</button>
+<%= unless @options == [] do %>
+  <h2>Remaining Pieces</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Piece</th>
+        <th>Number</th>
+        <th>Button</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for option <- @options do %>
+      <tr>
+        <td>
+          <%= option.name %>
+          <img src="<%= option.url %>" alt="Girl in a jacket" width="50" height="50">
+        </td>
+        <td><%= option.id %></td>
+        <td><button phx-click="select" phx-value-choice="<%= option.id %>">Select</button></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

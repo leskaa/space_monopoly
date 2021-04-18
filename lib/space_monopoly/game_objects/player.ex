@@ -1,5 +1,6 @@
 defmodule SpaceMonopoly.GameObjects.Player do
   use Ecto.Schema
+  require Logger
   import Ecto.Changeset
   alias SpaceMonopoly.Repo
   import Ecto.Query
@@ -38,8 +39,10 @@ defmodule SpaceMonopoly.GameObjects.Player do
   end
 
   def validate_piece_usage(%Ecto.Changeset{} = changeset) do
+    Logger.info(changeset)
+
     case Repo.exists?(
-           from p in Player, where: p.piece == ^(fetch_field(changeset, :piece) |> elem(1))
+           from p in Player, where: p.piece == ^(fetch_change(changeset, :piece) |> elem(1))
          ) do
       true -> add_error(changeset, :piece, "Piece already in use")
       false -> changeset
