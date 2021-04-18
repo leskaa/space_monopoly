@@ -18,6 +18,7 @@ defmodule SpaceMonopolyWeb.Router do
     pipe_through :browser
 
     live "/selectlive", SelectLive, :index
+    live "/satellites", SatellitesLive, :index
 
     get "/", PageController, :index
     get "/select", SelectController, :index
