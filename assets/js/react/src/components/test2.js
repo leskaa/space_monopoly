@@ -9,21 +9,21 @@ const Test2 = (props) => {
     const { gl } = useThree();
     texture.anisotropy = gl.capabilities.getMaxAnisotropy();
     // Set up state for the hovered and active state
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
+    // const [hovered, setHover] = useState(false)
+    // const [active, setActive] = useState(false)
 
     // useFrame((state, delta) => (hovered ? null: mesh.current.rotation.y += 0.0001))
 
     ///R = 6371 (Radius of the earth in km)
-
+//         onClick={(event) => setActive(!active)}
+// onPointerOver={(event) => setHover(true)}
+// onPointerOut={(event) => setHover(false)}
     // Return view, these are regular threejs elements expressed in JSX
     return (
       <mesh
         {...props}
         ref={mesh}
-        onClick={(event) => setActive(!active)}
-        onPointerOver={(event) => setHover(true)}
-        onPointerOut={(event) => setHover(false)}>
+>
         <sphereBufferGeometry attach="geometry" args={[6.371, 64, 64, 0, Math.PI * 2, 0, Math.PI]} />
         <meshStandardMaterial attach="material" map={texture} />
       </mesh>
