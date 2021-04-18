@@ -17,16 +17,28 @@ h5{font-size: 1.6rem; letter-spacing: 0; line-height: 1.4}
 h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
 pre{padding: 1em;}
 
+body {
+  background: #272730;
+}
+
+#sphere {
+  height: 100% !important;
+  width: 100% !important;
+}
+
 .container{
-  margin: 0 auto;
-  max-width: 80.0rem;
-  padding: 0 2.0rem;
-  position: relative;
-  width: 100%
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:  100% !important;
+  width: 100% !important;
 }
-select {
-  width: auto;
+
+#points {
+  border-radius: 20px;
 }
+
 
 /* Phoenix promo and logo */
 .phx-hero {
