@@ -16,9 +16,17 @@ defmodule SpaceMonopoly.GameObjects.Player do
   @doc false
   def changeset(player, attrs) do
     player
-    |> cast(attrs, [:cookie, :score, :piece])
+    |> cast(attrs, [:score, :piece])
+    |> cast_cookie
     |> validate_required([:cookie, :score, :piece])
     |> validate_player_count
+  end
+
+  def cast_cookie(changeset) do
+    case changeset.data.id === nil do
+      true -> cast(changeset, %{cookie: Ecto.UUID.generate()}, [:cookie])
+      false -> changeset
+    end
   end
 
   def validate_player_count(%Ecto.Changeset{} = changeset) do

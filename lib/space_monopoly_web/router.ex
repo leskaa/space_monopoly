@@ -20,8 +20,6 @@ defmodule SpaceMonopolyWeb.Router do
     get "/select", SelectController, :index
   end
 
-
-
   # Other scopes may use custom stacks.
   scope "/api", SpaceMonopolyWeb do
     pipe_through :api
@@ -31,7 +29,7 @@ defmodule SpaceMonopolyWeb.Router do
     get "/pieces/:id", PieceController, :show
 
     # Players Json API
-    resources "/players", PlayerController
+    resources "/players", PlayerController, except: [:delete]
   end
 
   # Enables LiveDashboard only for development
