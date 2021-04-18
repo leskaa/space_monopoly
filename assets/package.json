@@ -8,11 +8,13 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.13.13",
+    "@react-three/fiber": "^6.0.14",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remount": "^0.11.0"
+    "remount": "^0.11.0",
+    "three": "^0.127.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
