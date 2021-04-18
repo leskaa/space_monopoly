@@ -2,9 +2,10 @@ defmodule SpaceMonopolyWeb.Router do
   use SpaceMonopolyWeb, :router
 
   pipeline :browser do
+    plug :put_root_layout, {SpaceMonopolyWeb.LayoutView, :root}
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -15,6 +16,9 @@ defmodule SpaceMonopolyWeb.Router do
 
   scope "/", SpaceMonopolyWeb do
     pipe_through :browser
+
+    # live "/", PageLive, :index
+    # live "/select", SelectLive, :index
 
     get "/", PageController, :index
     get "/select", SelectController, :index
