@@ -7,7 +7,7 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :space_monopoly, SpaceMonopoly.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "password",
   database: "space_monopoly_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
