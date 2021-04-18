@@ -20,6 +20,7 @@ defmodule SpaceMonopoly.GameObjects.Player do
     |> cast_cookie
     |> validate_required([:cookie, :score, :piece])
     |> validate_player_count
+    |> validate_piece_usage
   end
 
   def cast_cookie(changeset) do
@@ -33,6 +34,15 @@ defmodule SpaceMonopoly.GameObjects.Player do
     case Repo.one(from p in Player, select: count("*")) < 8 do
       true -> changeset
       false -> add_error(changeset, :score, "Too many players")
+    end
+  end
+
+  def validate_piece_usage(%Ecto.Changeset{} = changeset) do
+    case Repo.exists?(
+           from p in Player, where: p.piece == ^(fetch_field(changeset, :piece) |> elem(1))
+         ) do
+      true -> add_error(changeset, :piece, "Piece already in use")
+      false -> changeset
     end
   end
 end
