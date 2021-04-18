@@ -1,0 +1,2 @@
+This is a select page
+<%= gettext "Welcome to %{name}!", name: "Phoenix" %>

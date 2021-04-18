@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :hello,
-  ecto_repos: [Hello.Repo]
+config :space_monopoly,
+  ecto_repos: [SpaceMonopoly.Repo]
 
 # Configures the endpoint
-config :hello, HelloWeb.Endpoint,
+config :space_monopoly, SpaceMonopolyWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "5JyRGPAT1QZnrk/2vVgRonbyrnHWwyRno8ceQcn6SCxY5p6uw41rM1uSxpyFVl1h",
-  render_errors: [view: HelloWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Hello.PubSub,
+  render_errors: [view: SpaceMonopolyWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: SpaceMonopoly.PubSub,
   live_view: [signing_salt: "pOKmnfcG"]
 
 # Configures Elixir's Logger

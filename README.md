@@ -1,4 +1,4 @@
-# Hello
+# SpaceMonopoly
 
 Before starting your Phoenix server, you have to create a postgres database
 
