@@ -47,7 +47,8 @@ defmodule SpaceMonopoly.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, "~> 0.15.4"},
       {:floki, ">= 0.27.0", only: :test},
-      {:satellite_ex, "~> 0.1.4"}
+      {:satellite_ex, "~> 0.1.4"},
+      {:phoenix_live_react, "~> 0.4"}
     ]
   end
 

@@ -12,16 +12,16 @@ import "../css/app.scss"
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
-import {Socket} from "phoenix"
+import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
+import LiveReact from "phoenix_live_react"
 import "phoenix_html"
 import "./react/src/app.js"
 
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let hooks = { LiveReact }
 
-// Connect if there are any LiveViews on the page
-liveSocket.connect()
+let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+let liveSocket = new LiveSocket("/live", Socket, { hooks, params: { _csrf_token: csrfToken } })
 
 // Expose liveSocket on window for web console debug logs and latency simulation:
 // >> liveSocket.enableDebug()
@@ -29,4 +29,7 @@ liveSocket.connect()
 // The latency simulator is enabled for the duration of the browser session.
 // Call disableLatencySim() to disable:
 // >> liveSocket.disableLatencySim()
+
+// Connect if there are any LiveViews on the page
+liveSocket.connect()
 window.liveSocket = liveSocket

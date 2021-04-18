@@ -21,7 +21,12 @@ body {
   background: #272730;
 }
 
-#sphere {
+div[data-phx-view="GameLive"] {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+#test-component-1-container {
   height: 100% !important;
   width: 100% !important;
 }

@@ -1,3 +1,5 @@
-import { define } from 'remount'
-import Test from './components/test'
-define({ 'x-anynameyouwant': Test })
+import Test from "./components/test";
+
+window.Components = {
+  Test
+}

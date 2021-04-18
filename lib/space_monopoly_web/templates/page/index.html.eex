@@ -4,7 +4,6 @@
 </section>
 
 <section class="phx-hero">
-  <x-anynameyouwant></x-anynameyouwant>
   <a href="/selectlive"><button>Choose Location</button></a>
 </section>
 

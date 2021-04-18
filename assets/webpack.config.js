@@ -10,6 +10,12 @@ module.exports = (env, options) => {
   const devMode = options.mode !== 'production';
 
   return {
+    resolve: {
+      alias: {
+        react: path.resolve(__dirname, './node_modules/react'),
+        'react-dom': path.resolve(__dirname, './node_modules/react-dom')
+      }
+    },
     optimization: {
       minimizer: [
         new TerserPlugin({ cache: true, parallel: true, sourceMap: devMode }),

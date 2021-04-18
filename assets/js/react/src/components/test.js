@@ -23,6 +23,7 @@ const Test = () => (
   <>
     <Sidebar class="sidebar"></Sidebar>
     <Canvas
+      id="sphere"
       colorManagement
       camera={{ position: [30, 30, 30], fov: 20, far: 10000}}
       raycaster={{ params: { Points: { threshold: 0.2 } } }}

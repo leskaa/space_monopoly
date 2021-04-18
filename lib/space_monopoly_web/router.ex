@@ -19,6 +19,7 @@ defmodule SpaceMonopolyWeb.Router do
 
     live "/selectlive", SelectLive, :index
     live "/satellites", SatellitesLive, :index
+    live "/game", GameLive, :index
 
     get "/", PageController, :index
     get "/select", SelectController, :index

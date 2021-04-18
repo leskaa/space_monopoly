@@ -31,18 +31,17 @@ const Satelites = (props) => {
       luminosity: 'dark',
       format: 'rgb'
     }).replace(/[^\d,]/g, '').split(',');
-    //Colors are stored as RGB and divided by 255
-    // const colorRed = 255, colorGreen = 255, colorBlue = 255
-    const colorRed = rc[0], colorGreen = rc[1], colorBlue = rc[2]
     positions.push((R * Math.cos(lat) * Math.cos(lon)) * altitude);    //X-AXIS
     positions.push((R * Math.sin(lat)) * altitude);    //Z-AXIS
     positions.push((R * Math.cos(lat) * Math.sin(lon)) * altitude);    //Y-AXIS
     // positions.push(0);    //X-AXIS
     // positions.push(0);    //Z-AXIS
     // positions.push(i);    //Y-AXIS
-    colors.push(colorRed / 255)
-    colors.push(colorGreen / 255)
-    colors.push(colorBlue / 255)
+
+    //Colors are stored as RGB and divided by 255
+    colors.push(rc[0] / 255)
+    colors.push(rc[1] / 255)
+    colors.push(rc[2] / 255)
     }
     return [new Float32Array(positions), new Float32Array(colors)];
   }, [1000])
