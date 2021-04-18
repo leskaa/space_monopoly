@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom'
 import React, { useRef, useState } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three/build/three.module';
@@ -15,6 +14,8 @@ const Test2 = (props) => {
 
     // useFrame((state, delta) => (hovered ? null: mesh.current.rotation.y += 0.0001))
 
+    ///R = 6371 (Radius of the earth in km)
+
     // Return view, these are regular threejs elements expressed in JSX
     return (
       <mesh
@@ -23,7 +24,7 @@ const Test2 = (props) => {
         onClick={(event) => setActive(!active)}
         onPointerOver={(event) => setHover(true)}
         onPointerOut={(event) => setHover(false)}>
-        <sphereBufferGeometry attach="geometry" args={[4, 64, 64]} />
+        <sphereBufferGeometry attach="geometry" args={[6.371, 64, 64, 0, Math.PI * 2, 0, Math.PI]} />
         <meshStandardMaterial attach="material" map={texture} />
       </mesh>
     )

@@ -17,6 +17,10 @@ h5{font-size: 1.6rem; letter-spacing: 0; line-height: 1.4}
 h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
 pre{padding: 1em;}
 
+body {
+  background: #272730;
+}
+
 #sphere {
   height: 100% !important;
   width: 100% !important;
@@ -30,6 +34,11 @@ pre{padding: 1em;}
   height:  100% !important;
   width: 100% !important;
 }
+
+#points {
+  border-radius: 20px;
+}
+
 
 /* Phoenix promo and logo */
 .phx-hero {
